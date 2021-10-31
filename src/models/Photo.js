@@ -4,7 +4,7 @@ export default class Photo extends Model {
   static init(sequelize) {
     super.init(
       {
-        originalName: {
+        originalname: {
           type: Sequelize.STRING,
           defaultValue: '',
           validate: {
@@ -28,5 +28,9 @@ export default class Photo extends Model {
       },
     );
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Aluno, { foreignKey: 'aluno_id' });
   }
 }
